@@ -55,7 +55,7 @@ jobs:
         ./.github/scripts/build.sh :osgi.tck:tck.core :buildscriptDependencies
     - name: Upload TCK Test Reports on failure
       if: ${{ failure() }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: TCK-core-reports
         path: |
