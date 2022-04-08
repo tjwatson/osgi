@@ -154,7 +154,7 @@ jobs:
         distribution: 'temurin'
         java-version: ${{ env.java_version }}
     - name: Download TCK
-      uses: actions/download-artifact@v2
+      uses: actions/download-artifact@v3
       with:
         name: OSGi-TCK
     - name: Run TCK
