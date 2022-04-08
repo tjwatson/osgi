@@ -76,7 +76,7 @@ jobs:
       run: |
         ./.github/scripts/build.sh
     - name: Upload TCK
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: OSGi-TCK
         if-no-files-found: error
@@ -94,7 +94,7 @@ jobs:
         OSSRH_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
     - name: Upload Generated Repo
       if: ${{ fromJSON(env.canonical) }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: OSGi-Generated-Repo
         path: |
@@ -127,14 +127,14 @@ jobs:
         force_orphan: true
     - name: Upload Specification HTML
       if: ${{ fromJSON(env.canonical) }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: OSGi-Specification-HTML
         path: |
           osgi.specs/generated/html/
     - name: Upload Specification PDF
       if: ${{ fromJSON(env.canonical) }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: OSGi-Specification-PDF
         path: |
@@ -164,7 +164,7 @@ jobs:
         java -jar jar/bnd.jar --exceptions runtests --title ${{ matrix.tck }} --reportdir reports/${{ matrix.tck }} ${{ matrix.tck }}.bnd
     - name: Upload TCK Test Reports
       if: ${{ always() && ((steps.tck.outcome == 'success') || (steps.tck.outcome == 'failure')) }}
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: TCK-${{ matrix.tck }}-reports
         path: |
